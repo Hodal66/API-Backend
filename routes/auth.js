@@ -83,9 +83,16 @@ router.post("/login", async (req, res) => {
       .status(400)
       .json({ status: 400, message: "Invalid userName or password" });
 
+
+      if(user.email === "admin@gmail.com"){
+        const token = jwt.sign({ _id: user._id }, process.env.ADMIN_TOKEN);
+        res.status(200).json({ authToken: token, name: user.name, id: user._id });
+      }else{
   //Create and assign a token to the legged user
   const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
   res.status(200).json({ authToken: token, name: user.name, id: user._id }); // adding token to the header to the user'
+      }
+
 });
 
 //UPDATE A USER
