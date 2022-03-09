@@ -20,5 +20,5 @@ const subscribeSchema = new schema(
         timestamps: true,
     }
 );
-const subsciber = mongoose.model("User", userSchema);
-export {subsciber};
+const subscriber = mongoose.model("subscriber", userSchema);
+export {subscriber};

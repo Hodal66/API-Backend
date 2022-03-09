@@ -1,24 +1,20 @@
-
-import {router} from "express";
-
 import {
-    sub_add,
-    sub_see_one,
+    createNewSubscriber,
+    subscriberDetails,
     allSubscribes,
-    sub_remove,
+    deleteSubscriber,
 } from "../controllers/subscribe.controler";
-import { admin as verifyAdmin } from "./verifyToken.js";
-
-//!!get All subscribers
+const router = router();
+//get All subscribers
 router.get("/", allSubscribes);
 
-//!!Posting new subscuber
-router.post("/subscribe", sub_add);
+// new subscuber
+router.post("/subscriber", createNewSubscriber);
 
-//!!get one subscuber
-router.get("/:id", sub_see_one);
+//get one subscuber
+router.get("/:id", subscriberDetails);
 
-//!!Delete a subsriber
-router.delete("/:id", verify, sub_remove);
+//Delete a subsriber
+router.delete("/:id",deleteSubscriber);
 
-export { router };
+export default router;

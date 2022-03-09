@@ -7,7 +7,7 @@ import cors from "cors"
 //!!Router
 import { router as blogRoutes } from "./routes/blogRoutes.js";
 import { router as authRoute } from "./routes/auth.js";
-import { router as contactRoute } from "./routes/contactRoute.js";
+import { router as contactRoute } from "./routes/contactRoute.js"; import { router as SubscribeRoutes } from "./routes/SubscribeRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -15,9 +15,13 @@ app.use(cors())
 
 //connect to DB
 const dbURI = process.env.DB_CONNECT;
-mongoose.connect(dbURI, () => {
-  console.log("Connected to db! ");
-});
+
+
+ mongoose.connect(dbURI, () => {
+    console.log("Connected to db! ");
+  });
+
+
 
 //!!Middleware
 app.use(express.json());
@@ -30,6 +34,7 @@ app.use(morgan("dev"));
 app.use("/api/v1/users", authRoute);
 app.use("/api/v1/blogs", blogRoutes);
 app.use("/api/v1/contacts", contactRoute);
+app.use("/api/v1/subscribes", SubscribeRoutes);
 
 app.get("/", (req, res) => {
   return res.redirect("/api-docs");
@@ -43,7 +48,7 @@ app.use("/*", (req, res) => {
   });
 });
 
-const PORT = process.env.PORT || 9000;
+const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
   console.log(`Server is running on ${PORT}`);
