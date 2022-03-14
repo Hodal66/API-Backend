@@ -8,7 +8,7 @@ import cors from "cors"
 import { router as blogRoutes } from "./routes/blogRoutes.js";
 import { router as authRoute } from "./routes/auth.js";
 import { router as contactRoute } from "./routes/contactRoute.js";
-
+import { router as susbscriberRoute} from "./routes/subscribeRoute.js";
 dotenv.config();
 const app = express();
 app.use(cors())
@@ -30,6 +30,8 @@ app.use(morgan("dev"));
 app.use("/api/v1/users", authRoute);
 app.use("/api/v1/blogs", blogRoutes);
 app.use("/api/v1/contacts", contactRoute);
+app.use("/api/v1/subscribes",susbscriberRoute);
+
 
 app.get("/", (req, res) => {
   return res.redirect("/api-docs");
@@ -43,7 +45,7 @@ app.use("/*", (req, res) => {
   });
 });
 
-const PORT = process.env.PORT || 9000;
+const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, () => {
   console.log(`Server is running on ${PORT}`);

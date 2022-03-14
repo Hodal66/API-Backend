@@ -51,8 +51,18 @@ const contactValidation = (data) =>{
   const validation = schema.validate(data);
   return validation;
 }
+// New Comment subscriber
+const subscriberValidation = (data) => {
+	const schema = Joi.object({
+		email: Joi.string().required().email(),
+	});
+
+	return schema.validate(data);
+};
+
 
 export { registerValidation };
 export { loginValidation };
 export { blogValidation };
 export { contactValidation };
+export { subscriberValidation };
