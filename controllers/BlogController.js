@@ -1,8 +1,5 @@
 import Blog from "../model/blog.js";
 import { blogValidation } from "../validation.js";
-
-//blog_index, blog_details, blog_create_get, blog_create_post, blog_delete, blogUpdate, blogDelete
-
 //DISPLAYING ALL BLOGS
 export const blog_index = async (req, res) => {
   Blog.find()

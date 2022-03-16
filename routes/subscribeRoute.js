@@ -1,23 +1,17 @@
+/** @format */
 
-import { Router } from "express";
-
-import { auth as verify } from "./verifyToken.js";
-
+import express from "express";
 import {
-    subscribeToNewsletter,
-    getAllSubscribers,
-    unsubscribeToNewsletter,
+	getAllSubscribers,
+	subscribeToNewsletter,
+	unsubscribeToNewsletter,
 } from "../controllers/subscriberController.js";
 
-const router = Router();
 
-//!!AALL SUBSCRIBERS
+const router = express.Router();
+
+router.post("/", subscribeToNewsletter);
 router.get("/", getAllSubscribers);
+router.delete("/", unsubscribeToNewsletter);
 
-//!!SUBSCRIBE
-router.post("/subscribe", subscribeToNewsletter);
-
-//!!UNSUBSCRIBE
-router.delete("/:email", verify, unsubscribeToNewsletter);
-
- export { router };
+export default router;

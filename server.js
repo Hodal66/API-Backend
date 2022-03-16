@@ -5,14 +5,13 @@ import morgan from "morgan";
 import cors from "cors"
 import  swaggerUi  from "swagger-ui-express";
 import swaggerJSDoc from "swagger-jsdoc";
-
 //!!Router
 import { swaggerOptions } from "./swagger.js";
 import { router as blogRoutes } from "./routes/blogRoutes.js";
 import { router as authRoute } from "./routes/auth.js";
-// import article from "./routes/article.route";
+import article from "./routes/article.route.js";
 import { router as contactRoute } from "./routes/contactRoute.js";
-import { router as susbscriberRoute} from "./routes/subscribeRoute.js";
+import susbscriberRoute from "./routes/subscribeRoute.js";
 dotenv.config();
 const app = express();
 app.use(cors())
@@ -38,8 +37,8 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use("/api/v1/users", authRoute);
 app.use("/api/v1/blogs", blogRoutes);
 app.use("/api/v1/contacts", contactRoute);
-// server.use("/api/v1/articles", article);
-app.use("/api/v1/subscribes",susbscriberRoute);
+app.use("/api/v1/articles", article);
+app.use("/api/v1/subscribe",susbscriberRoute);
 
 
 app.get("/", (req, res) => {
@@ -53,29 +52,10 @@ app.use("/*", (req, res) => {
     message: "Not found",
   });
 });
-// swagger documentation
-// server.use(morgan("dev"));
-// server.use("/api/v1/", queryRoutes, authRoutes, article, comment, subscriber);
-// server.use(
-// 	"/api-docs",
-// 	swaggerUi.serve,
-// 	swaggerUi.setup(swaggerDoc, { explorer: true })
-// );
-// server.use(cors());
-
-
-
-
-// server.use(morgan("dev"));
-// server.use("/api/v1",authRoute,blogRoutes,contactRoute,susbscriberRoute);
-// server.use("/api-docs", swaggerUi.setup(swaggerDoc, {explorer: true}));
-
-// server.use(cors());
 
 const PORT = process.env.PORT || 9000;
 
 app.listen(PORT, () => {
   console.log(`Server is running on ${PORT}`);
 });
-
 export default app;

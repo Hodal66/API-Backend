@@ -1,6 +1,6 @@
 /** @format */
 
-import Article from "../model/article.model.JS";
+import Article from "../model/article.model.js";
 import { fileUpload } from "../helpers/multer.js";
 import { articleValidation } from "../validation.js";
 
@@ -11,7 +11,7 @@ export const saveArticle = async (req, res, next) => {
 		req.body.image = await fileUpload(req);
 	} else {
 		req.body.image =
-			"https://images.pexels.com/photos/1072179/pexels-photo-1072179.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260";
+			"https://images.app.goo.gl/KSrkEVNSfxm96ckT9";
 	}
 	const article = {
 		cover: req.body.image,
@@ -60,14 +60,15 @@ export const updateArticle = async (req, res) => {
 };
 
 export const deleteArticleById = async (req, res) => {
-	const { id } = req.params;
+	const id = req.params.id;
 	const article = await Article.findById(id);
 	if (!article)
-		return res
-			.status(404)
-			.json({ success: false, message: "Article not found" });
-	await Article.findByIdAndDelete(id);
-	res
-		.status(200)
-		.json({ success: true, message: "Article deleted", data: Null });
+		return res.status(404).json({ success: 404, message: "Article not found" });
+	//await Article.findByIdAndDelete(id);
+	const articleDelete = await Article.findByIdAndDelete(id);
+	res.status(200).json({ success: 200, message: "Article deleted" });
+
+	return res.status(500).json({status: 500, message: "Internal server error!" });
+
 };
+  
