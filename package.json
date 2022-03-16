@@ -17,7 +17,6 @@
   "dependencies": {
     "@hapi/joi": "^17.1.1",
     "@types/date-fns": "^2.6.0",
-    "babel": "^6.23.0",
     "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
     "cloudinary": "^1.28.1",
@@ -42,6 +41,7 @@
     "@babel/cli": "^7.16.8",
     "@babel/core": "^7.16.7",
     "@babel/preset-env": "^7.16.8",
+    "babel-cli": "^6.26.0",
     "chai": "^4.3.4",
     "chai-http": "^4.3.0",
     "mocha": "^9.1.4",
