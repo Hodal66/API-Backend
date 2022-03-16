@@ -311,6 +311,30 @@ router.delete("/:id", verify, async (req, res) => {
     .json({ status: 500, message: "Internal server error" });
 });
 
+/**
+ * @swagger
+ * /api/v1/users:
+ *  get:
+ *    security:
+ *      - Token: []
+ *    summary: This route returns a list of users
+ *    responses:
+ *      200:
+ *        description: Success
+ *      204:
+ *        description: No user found
+ *      401:
+ *        description: Access denied
+ *      500:
+ *        description: Internal server error
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: array
+ *              items:
+ *                $ref: '#/components/schemas/User'
+ */
+
 //!! Get all users
 router.get("/", verify, async (req, res) => {
   User.find()
