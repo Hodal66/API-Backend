@@ -264,6 +264,32 @@ router.put("/:id", verify, async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /api/v1/users/{id}:
+ *  delete:
+ *    security:
+ *      - Token: []
+ *    summary: This route Allow  to delete an existing User
+ *    description: a Token is required to Delete a user
+ *    tags:
+ *      - User
+ *    parameters:
+ *      - in: path
+ *        name: id
+ *        required: true
+ *        description: you have to provide a valid user Id
+ *        schema:
+ *          $ref: '#/components/schemas/User'
+ *    responses:
+ *      200:
+ *        description: a user successfully Deleted
+ *      204:
+ *        description: user not found
+ *      401:
+ *        description: Access denied!
+ */
+
 //!!Delete a user
 router.delete("/:id", verify, async (req, res) => {
   const id = req.params.id;
