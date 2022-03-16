@@ -10,6 +10,113 @@ import { auth as verify } from "./verifyToken.js";
 
 const router = Router();
 
+/**
+ * @openapi
+ * tags:
+ *  name: User
+ *  description: APIs for the user
+ */
+
+/**
+ * @swagger
+ * components:
+ *  schemas:
+ *    User:
+ *      type: object
+ *      required:
+ *        - name
+ *        - email
+ *        - password
+ *      properties:
+ *        name:
+ *          type: string
+ *          description: Every user must provide a name
+ *        email:
+ *          type: string
+ *          description: email must be provided
+ *        password:
+ *          type: string
+ *          description: Also provide your password.
+ *      example:
+ *        name: muheto hodal
+ *        email: me@gmail.com
+ *        password: hodol123
+ */
+
+/**
+ * @swagger
+ * components:
+ *  responses:
+ *    UnauthorizedError:
+ *      description: Access need Token
+ */
+
+/**
+ * @swagger
+ * components:
+ *  securitySchemes:
+ *    Token:
+ *      type: http
+ *      scheme: Bearer
+ *      bearerFormat: JWT
+ */
+
+/**
+ * @swagger
+ * components:
+ *  schemas:
+ *      LoginInfo:
+ *          type: object
+ *          required:
+ *              - email
+ *              - password
+ *          properties:
+ *              email:
+ *                  type: string
+ *                  description: an email must be valid
+ *              password:
+ *                  type: string
+ *                  description: password required.
+ *          example:
+ *            email: mhthodol@gmail.com
+ *            password: mine222
+ */
+
+/**
+ * @swagger
+ * /api/v1/users/register:
+ *  post:
+ *    summary: A user can make registration
+ *    description: both name, email and password must be provided
+ *    tags:
+ *      - User
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            $ref: '#/components/schemas/User'
+ *
+ *    responses:
+ *      200:
+ *        description: Successfully registered.
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/User'
+ *      400:
+ *        description: Invalid input or Bad formated input
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                data:
+ *                  type: object
+ *                code:
+ *                  type: number
+ */
+31
 router.post("/register", async (req, res) => {
   console.log(req.body);
 
