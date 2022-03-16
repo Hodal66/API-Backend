@@ -120,7 +120,31 @@ router.post("/contactUs", createMessage);
  */
 //!!get one message
 router.get("/:id", messageDetails);
-
+/**
+ * @swagger
+ * /api/v1/contacts/{id}:
+ *  delete:
+ *    security:
+ *      - Token: []
+ *    summary: This route Allow user to delete an existing message
+ *    description: a Token is required to Delete a message
+ *    tags:
+ *      - Contact
+ *    parameters:
+ *      - in: path
+ *        name: id
+ *        required: true
+ *        description: you have to provide a valid message Id
+ *        schema:
+ *          $ref: '#/components/schemas/Contact'
+ *    responses:
+ *      200:
+ *        description: a message Deleted
+ *      204:
+ *        description: Message not found
+ *      401:
+ *        description: Access denied!
+ */
 //!!Delete a Message
 router.delete("/:id", verify, deleteMessage);
 
