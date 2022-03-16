@@ -1,3 +1,4 @@
+
 import mongoose from "mongoose";
 const schema = mongoose.Schema;
 
@@ -11,10 +12,16 @@ const blogSchema = new schema(
       type: String,
       required: true,
     },
+    slug:{
+      type:String,
+      required: true,
+
+    },
     body: {
       type: String,
       required: true,
     },
+
   },
   { timestamps: true }
 );

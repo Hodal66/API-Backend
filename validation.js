@@ -51,8 +51,31 @@ const contactValidation = (data) =>{
   const validation = schema.validate(data);
   return validation;
 }
+// New Comment subscriber
+const subscriberValidation = (data) => {
+	const schema = Joi.object({
+		email: Joi.string().required().email(),
+	});
+
+	return schema.validate(data);
+};
+//!! NEW POST articleValidation
+const articleValidation = ((data)=>{
+  const schema = Joi.object({
+    title: Joi.string().min(3).required(),
+    slug: Joi.string().min(3).required(),
+    author: Joi.string().min(5).required(),
+    content: Joi.string().min(3).required(),
+    comments: Joi.string().min(3).required()
+  });
+
+  const validation = schema.validate(data);
+  return validation;
+});
 
 export { registerValidation };
 export { loginValidation };
 export { blogValidation };
 export { contactValidation };
+export { subscriberValidation };
+export { articleValidation };
