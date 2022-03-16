@@ -8,6 +8,7 @@ import {
   blogUpdate,
 } from "../controllers/BlogController.js";
 import { auth as verify } from "./verifyToken.js";
+import { admin as verifyAdmin } from "./verifyToken.js";
 
 const router = Router();
 
@@ -188,6 +189,6 @@ router.put("/:id", verify, blogUpdate);
  */
 
 //!! Handling DELETE request
-router.delete("/:id", verify, blog_delete);
+router.delete("/:id", verifyAdmin, blog_delete);
 
 export { router };

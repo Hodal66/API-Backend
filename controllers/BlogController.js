@@ -1,5 +1,9 @@
 import Blog from "../model/blog.js";
 import { blogValidation } from "../validation.js";
+import {admin as verifyAdmin} from '../routes/verifyToken.js'
+
+//blog_index, blog_details, blog_create_get, blog_create_post, blog_delete, blogUpdate, blogDelete
+
 //DISPLAYING ALL BLOGS
 export const blog_index = async (req, res) => {
   Blog.find()
@@ -70,7 +74,6 @@ export const blogUpdate = async (req, res) => {
 //DELETE POST
 export const blog_delete = async (req, res) => {
   const id = req.params.id;
-
   const result = await Blog.findById(id);
 
   if (!result) return res.status(404).json({status: 404, message: `post Not found!` });
