@@ -93,7 +93,31 @@ router.get("/", allMessage);
 
 //!!Posting new message
 router.post("/contactUs", createMessage);
-
+/**
+ * @swagger
+ * /api/v1/contacts/{id}:
+ *  get:
+ *    summary: This route returns the details of a specfic message
+ *    description: The response should be formated in Json object
+ *    tags:
+ *      - Contact
+ *    parameters:
+ *      - in: id
+ *        name: id
+ *        required: true
+ *        description: This should be a valid message Id
+ *    responses:
+ *      200:
+ *        description: a Message Found
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/Contact'
+ *      404:
+ *        description: Not found!
+ *      500:
+ *        description: Internal Server Error
+ */
 //!!get one message
 router.get("/:id", messageDetails);
 
