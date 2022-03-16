@@ -163,7 +163,28 @@ router.post("/register", async (req, res) => {
     return res.status(400);
   }
 });
-
+/**
+ * @swagger
+ * /api/v1/users/login:
+ *  post:
+ *    summary: A user must sign-in with his/her credentials
+ *    description: A user must provide a valid email and password to login
+ *    tags:
+ *      - User
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            $ref: '#/components/schemas/LoginInfo'
+ *    responses:
+ *      200:
+ *        description: Logged-in successfully!, keep your Token
+ *      400:
+ *        description: Invalid userName or password!
+ *      404:
+ *        description: Email is not found!
+ */
 //!!LOGIN
 router.post("/login", async (req, res) => {
   //Validating data before the user Logged In
