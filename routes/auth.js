@@ -215,7 +215,29 @@ router.post("/login", async (req, res) => {
   const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
   res.status(200).json({ authToken: token, name: user.name, id: user._id }); // adding token to the header to the user'
 });
-
+/**
+ * @swagger
+ * /api/v1/users/{id}:
+ *  put:
+ *    security:
+ *      - Token: []
+ *    summary: you can update your profile
+ *    description: you need a valid Token to update your profile
+ *    tags:
+ *      - User
+ *    parameters:
+ *      - in: path
+ *        name: id
+ *        required: true
+ *        description: use a Valid Id
+ *        schema:
+ *          type: string
+ *    responses:
+ *      200:
+ *        description: Successfully updated
+ *      500:
+ *        description: Internal error!
+ */
 //UPDATE A USER
 router.put("/:id", verify, async (req, res) => {
   const id = req.params.id;
