@@ -31,8 +31,8 @@ app.use("/api/v1/users", authRoute);
 app.use("/api/v1/blogs", blogRoutes);
 app.use("/api/v1/contacts", contactRoute);
 
-app.get("/", (req, res) => {
-  return res.redirect("/api-docs");
+app.get('/', (req, res) => {
+  res.status(200).json({ success: true, message: "You successfully landed on My brand app API" })
 });
 
 //!!404  page
