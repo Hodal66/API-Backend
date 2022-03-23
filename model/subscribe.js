@@ -1,17 +1,14 @@
+import mongoose from 'mongoose'
 
-import mongoose from "mongoose";
+const newsSchema = new mongoose.Schema({
 
-const SubscriberSchema = mongoose.Schema({
-	email: {
-		type: String,
-		required: true,
-	},
-	createdAt: {
-		type: Date,
-		default: new Date(),
-	},
-});
+    email: {
+        type: String,
+        required: true
+    }
 
-const Subscriber = mongoose.model("Subscriber", SubscriberSchema);
-export default Subscriber;
+})
 
+
+const News = mongoose.model('News', newsSchema);
+export default News;

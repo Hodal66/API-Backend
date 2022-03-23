@@ -7,10 +7,6 @@ const ArticleSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	slug: {
-		type: String,
-		required: true,
-	},
 	author: {
 		type: String,
 		required: true,

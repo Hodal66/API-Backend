@@ -11,7 +11,7 @@ import { router as blogRoutes } from "./routes/blogRoutes.js";
 import { router as authRoute } from "./routes/auth.js";
 import article from "./routes/article.route.js";
 import { router as contactRoute } from "./routes/contactRoute.js";
-import susbscriberRoute from "./routes/subscribeRoute.js";
+//import susbscriberRoute from "./routes/subscribeRoute.js";
 dotenv.config();
 const app = express();
 app.use(cors())
@@ -38,11 +38,11 @@ app.use("/api/v1/users", authRoute);
 app.use("/api/v1/blogs", blogRoutes);
 app.use("/api/v1/contacts", contactRoute);
 app.use("/api/v1/articles", article);
-app.use("/api/v1/subscribe",susbscriberRoute);
+//app.use('/api/v1/newsletter', susbscriberRoute);
 
 
-app.get('/', (req, res) => {
-  res.status(200).json({ success: true, message: "You successfully landed on My brand app API" })
+app.get("/", (req, res) => {
+  return res.redirect("/api-docs");
 });
 
 //!!404  page
@@ -53,7 +53,7 @@ app.use("/*", (req, res) => {
   });
 });
 
-const PORT = process.env.PORT || 9000;
+const PORT = process.env.PORT || 7000;
 
 app.listen(PORT, () => {
   console.log(`Server is running on ${PORT}`);

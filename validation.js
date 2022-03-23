@@ -52,12 +52,12 @@ const contactValidation = (data) =>{
   return validation;
 }
 // New Comment subscriber
-const subscriberValidation = (data) => {
-	const schema = Joi.object({
-		email: Joi.string().required().email(),
-	});
+export const newsletterValidation = (data) => {
+  const schema = Joi.object({
+      email: Joi.string().min(6).required().email(),
+  });
 
-	return schema.validate(data);
+  return schema.validate(data);
 };
 //!! NEW POST articleValidation
 const articleValidation = ((data)=>{
@@ -77,5 +77,5 @@ export { registerValidation };
 export { loginValidation };
 export { blogValidation };
 export { contactValidation };
-export { subscriberValidation };
+//export { subscriberValidation };
 export { articleValidation };

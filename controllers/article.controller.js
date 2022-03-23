@@ -68,7 +68,7 @@ export const deleteArticleById = async (req, res) => {
 	const articleDelete = await Article.findByIdAndDelete(id);
 	res.status(200).json({ success: 200, message: "Article deleted" });
 
-	return res.status(500).json({status: 500, message: "Internal server error!" });
+	//return res.status(500).json({status: 500, message: "Internal server error!" });
 
 };
   
