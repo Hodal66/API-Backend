@@ -3,28 +3,37 @@
 import Article from "../model/article.model.js";
 import { fileUpload } from "../helpers/multer.js";
 import { articleValidation } from "../validation.js";
+import cloudinary from "cloudinary";
+import {ArticleServices} from "../services/article.services.js"
 
-export const saveArticle = async (req, res, next) => {
-	const { error } = articleValidation(req.body);
-	if (error) return res.status(400).json({ message: error.details[0].message });
-	if (req.file) {
-		req.body.image = await fileUpload(req);
-	} else {
-		req.body.image =
-			"https://images.app.goo.gl/KSrkEVNSfxm96ckT9";
-	}
-	const article = {
-		cover: req.body.image,
-		title: req.body.title,
-		slug: req.body.content,
-		author: req.body.author,
-		content: req.body.author,
-		status: false,
-	};
-	const newArticle = new Article(article);
-	await newArticle.save();
-	res.status(201).json({ success: true, data: newArticle });
-};
+export class saveArticle {
+    // TODO Don't access database from this file you only needs
+    async createArticle(req, res, next) {
+        try {
+            console.log(req.file);
+            cloudinary.v2.uploader.upload(req.file.path, async function(err, image) {
+                if (err) { console.warn(err); }
+                req.body.image = image.url
+                const data = {
+                    title: req.body.title,
+                    content: req.body.content,
+					author:req.body.author,
+                    image: req.body.image,
+                    create_at: new Date()
+                }
+                console.log(data)
+               const article = await ArticleServices.createArticle(data)
+                res.status(200).json({ status: 200, message: "Article created successfully.....", data: article })
+            });
+        } catch (error) {
+            console.log(error)
+        }
+    } }
+
+
+
+
+
 
 export const getAllArticles = async (req, res) => {
 	const articles = await Article.find();

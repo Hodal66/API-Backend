@@ -5,6 +5,7 @@ import morgan from "morgan";
 import cors from "cors"
 import  swaggerUi  from "swagger-ui-express";
 import swaggerJSDoc from "swagger-jsdoc";
+
 //!!Router
 import { swaggerOptions } from "./swagger.js";
 import { router as blogRoutes } from "./routes/blogRoutes.js";
@@ -53,7 +54,7 @@ app.use("/*", (req, res) => {
   });
 });
 
-const PORT = process.env.PORT || 7000;
+const PORT = process.env.PORT || 9000;
 
 app.listen(PORT, () => {
   console.log(`Server is running on ${PORT}`);
