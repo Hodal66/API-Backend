@@ -5,6 +5,7 @@ import jwt from "jsonwebtoken";
 import { User } from "../model/User.js";
 import { registerValidation, loginValidation } from "../validation.js";
 import { auth as verify } from "./verifyToken.js";
+import {admin} from "./verifyToken.js"
 
 //!!VALIDATION
 
@@ -343,7 +344,7 @@ router.delete("/:id", verify, async (req, res) => {
  */
 
 //!! Get all users
-router.get("/", verify, async (req, res) => {
+router.get("/", admin, async (req, res) => {
   User.find()
     .sort({ createdAt: -1 })
     .then((result) => {
