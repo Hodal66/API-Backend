@@ -16,7 +16,7 @@ describe("blogs", async () => {
     await Blog.deleteMany({});
     await User.deleteMany({});
     console.log("Post deleted");
-  });
+ 
 
   //Get all blogs
   describe("get a list of blogs ", () => {
@@ -51,5 +51,5 @@ describe("blogs", async () => {
         request.body.should.have.property("body");
       });
     });
-
-});
+    
+  });
