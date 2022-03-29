@@ -146,6 +146,6 @@ router.get("/:id", messageDetails);
  *        description: Access denied!
  */
 //!!Delete a Message
-router.delete("/:id", auth, deleteMessage);
+router.delete("/:id", deleteMessage);
 
 export { router };

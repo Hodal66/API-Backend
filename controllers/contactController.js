@@ -31,7 +31,6 @@ export const createMessage = async (req, res) =>{
     //!!save a message to db
     try {
       const savedMessage = await contact.save();
-      console.log(savedMessage.id);
       return res.status(201).json({status:"success", message: "Successfully sent, we will talk soon." });
     } catch (error) {
       console.log(error)
