@@ -9,6 +9,7 @@ import {
 	updateArticle,
 } from "../controllers/article.controller.js";
 import { auth as verify } from "./verifyToken.js";
+import { admin } from "./verifyToken.js";
 import multer from "multer";
 
 const router = express.Router();
@@ -23,10 +24,10 @@ const fileFilter = (req, file, cb) => {
 };
 const uploads = multer({ storage, fileFilter });
 
-router.post("/", verify, uploads.single("image"), saveArticle);
+router.post("/", uploads.single("image"), saveArticle);
 router.get("/", getAllArticles);
 router.get("/:id", getById);
-router.put("/:id", verify, updateArticle);
-router.delete("/:id", verify, deleteArticleById);
+router.put("/:id", admin, updateArticle);
+router.delete("/:id", admin, deleteArticleById);
 
 export default router;

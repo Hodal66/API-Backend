@@ -36,9 +36,15 @@ export const blog_details = async (req, res) => {
 //CREATING A POST
 export const blog_create_post = async (req, res) => {
   //check an empty submission or invalid
-  const { error } = blogValidation(req.body);
-  if (error) return res.status(400).json({status: 400, message: error.details[0].message });
-
+  console.log("kkk: ", req.body)
+  try {
+    const { error } = blogValidation(req.body);
+    if (error) return res.status(400).json({status: 400, message: error.details[0].message });
+  
+  } catch (error) {
+    console.log(error)
+  }
+ 
   //save  post
   try {
     const blog = await Blog.create(req.body);

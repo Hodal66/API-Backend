@@ -7,6 +7,7 @@ const ArticleSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
+	
 	author: {
 		type: String,
 		required: true,
@@ -21,13 +22,7 @@ const ArticleSchema = new mongoose.Schema({
 	createdAt: {
 		type: Date,
 		default: new Date(),
-	},
-	comments: [
-		{
-			type:String,
-			ref: "Comment",
-		},
-	],
+	}
 });
 const Article = mongoose.model("Article", ArticleSchema);
 export default Article;

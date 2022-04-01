@@ -13,7 +13,7 @@ export const swaggerOptions = {
       },
       servers: [
         {
-          url: "http://localhost:9000",
+          url: "http://localhost:5000",
           name: "Local server",
         },
       ],

@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 import { User } from "../model/User.js";
 import { registerValidation, loginValidation } from "../validation.js";
 import { auth as verify } from "./verifyToken.js";
-import {admin} from "./verifyToken.js"
+import { admin } from "./verifyToken.js";
 
 //!!VALIDATION
 
@@ -147,6 +147,7 @@ router.post("/register", async (req, res) => {
   const user = new User({
     name: req.body.name,
     email: req.body.email,
+    role:req.body.role,
     password: hashedPassword,
   });
 
@@ -155,9 +156,10 @@ router.post("/register", async (req, res) => {
     const savedUser = await user.save();
     // res.send(savedUser);
     return res.status(201).json({
-      status: 201,
+      status:"success",
       name: user.name,
       email: user.email,
+      role: user.role,
       Id: user._id,
     });
   } catch (error) {

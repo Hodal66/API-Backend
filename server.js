@@ -19,8 +19,15 @@ app.use(cors())
 const swaggerSpec = swaggerJSDoc(swaggerOptions);
 
 //connect to DB
+const enviroment = process.env.NODE_ENV;
+
 const dbURI = process.env.DB_CONNECT;
-mongoose.connect(dbURI, () => {
+const TEST_DB_CONNECT = process.env.TEST_DB_CONNECT;
+
+const connectionUrl = (enviroment=='dev') ? dbURI : TEST_DB_CONNECT;
+console.log("env: "+enviroment+"  ---- url: "+connectionUrl)
+
+mongoose.connect("mongodb+srv://hodalAndela:0000@cluster0.oqg7g.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", () => {
   console.log("Connected to db! ");
 });
 
@@ -35,7 +42,7 @@ app.use(morgan("dev"));
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use("/api/v1/users", authRoute);
-app.use("/api/v1/blogs", blogRoutes);
+// app.use("/api/v1/blogs", blogRoutes);
 app.use("/api/v1/contacts", contactRoute);
 app.use("/api/v1/articles", article);
 //app.use('/api/v1/newsletter', susbscriberRoute);
@@ -53,9 +60,10 @@ app.use("/*", (req, res) => {
   });
 });
 
-const PORT = process.env.PORT || 7000;
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log(`Server is running on ${PORT}`);
 });
 export default app;
+
