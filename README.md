@@ -1,6 +1,6 @@
 # API-Backend
 
-##Introduction
+###**Introduction**
 
 **This is the first project about myself describution + Blog**
 
@@ -18,7 +18,7 @@ Activitis....
 
 **in home page{
 
-######header
+#header
 
 -Blog -navigation links -title
 
@@ -63,10 +63,31 @@ My Brand ------>
 Html,css,images 
 Folders we Added Resourses Folder to include All fontawesome Icons
 
-######COLORS
+**COLORS**
 --color1:#495371;
 --color2:#F5F5F5;
 --color1:#darkblue;
 --color2:FFFFFF;
 
-######IMAGES
+**IMAGES**
+used 3 images
+
+**YOU CAN FOUND MORE DETAILS ON**
+
+**1.Trello link ::** `https://trello.com/c/qtiQ1kc3/`
+
+**2.figma link ::**` https://www.figma.com/file/OJLK87Jkh0JEYj2qEk9qQH/Hodal_brand?node-id=97%3A170`
+
+**3.api-docs link ::** `http://localhost:5000/api-docs/`
+
+**4. heroku link ::**  `https://api-my-brand.herokuapp.com/`
+
+**5. Netflix link ::** `https://app.netlify.com/sites/euphonious-manatee-3b1c2e/deploys/623de5dd48447b007522b281`
+
+**PERSONAL LINK MORE ABOUT ME
+
+**1.email::** `mhthodol@gmail.com`
+
+**2.linkdin::** `https://www.linkedin.com/in/muheto-hodal-23311a211/`
+
+**3.tel::** 0782439775
