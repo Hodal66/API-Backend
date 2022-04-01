@@ -1,6 +1,6 @@
 # API-Backend
 
-###**Introduction**
+#**INTRODUCTION**
 
 **This is the first project about myself describution + Blog**
 
@@ -16,7 +16,7 @@ Activitis....
 
 ............................................................
 
-**in home page{
+**IN HOME PAGES{
 
 #header
 
@@ -31,7 +31,7 @@ level of skill
 background smal description
 4.content -->section3 -->comment -contain user Name -contain password -comment side
 
-######Footer
+**FOOTER**
 
 **Blog -Navigation links -All media links**(
 .faceebook, 
