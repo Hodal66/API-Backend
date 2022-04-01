@@ -11,12 +11,12 @@ export const subscribeToNewsletter = async (req, res) => {
 	if (error) return res.status(400).json({ message: error.details[0].message });
 
 	let subscriber = await Subscriber.findOne({
-		email: req.email,
+		email: req.email
 	});
 	if (subscriber) {
 		return res.status(400).json({
-			error: true,
-			message: "Sorry , you are already subscribed to our newsletter",
+			success: false,
+			message: "Sorry , you are already subscribed to our newsletter"
 		});
 	}
 	subscriber = req.email;

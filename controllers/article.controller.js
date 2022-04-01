@@ -5,21 +5,19 @@ import { fileUpload } from "../helpers/multer.js";
 import { articleValidation } from "../validation.js";
 
 export const saveArticle = async (req, res, next) => {
+	//console.log("kamuuu: ", req.body)
 	const { error } = articleValidation(req.body);
 	if (error) return res.status(400).json({ message: error.details[0].message });
 	if (req.file) {
 		req.body.image = await fileUpload(req);
 	} else {
-		req.body.image =
-			"https://images.app.goo.gl/KSrkEVNSfxm96ckT9";
+		req.body.image = "https://images.app.goo.gl/KSrkEVNSfxm96ckT9";
 	}
 	const article = {
 		cover: req.body.image,
 		title: req.body.title,
-		slug: req.body.content,
 		author: req.body.author,
-		content: req.body.author,
-		status: false,
+		content: req.body.content
 	};
 	const newArticle = new Article(article);
 	await newArticle.save();
@@ -68,7 +66,7 @@ export const deleteArticleById = async (req, res) => {
 	const articleDelete = await Article.findByIdAndDelete(id);
 	res.status(200).json({ success: 200, message: "Article deleted" });
 
-	return res.status(500).json({status: 500, message: "Internal server error!" });
+	//return res.status(500).json({status: 500, message: "Internal server error!" });
 
 };
   

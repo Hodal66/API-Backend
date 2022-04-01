@@ -11,7 +11,7 @@ import { router as blogRoutes } from "./routes/blogRoutes.js";
 import { router as authRoute } from "./routes/auth.js";
 import article from "./routes/article.route.js";
 import { router as contactRoute } from "./routes/contactRoute.js";
-import susbscriberRoute from "./routes/subscribeRoute.js";
+//import susbscriberRoute from "./routes/subscribeRoute.js";
 dotenv.config();
 const app = express();
 app.use(cors())
@@ -19,8 +19,15 @@ app.use(cors())
 const swaggerSpec = swaggerJSDoc(swaggerOptions);
 
 //connect to DB
+const enviroment = process.env.NODE_ENV;
+
 const dbURI = process.env.DB_CONNECT;
-mongoose.connect(dbURI, () => {
+const TEST_DB_CONNECT = process.env.TEST_DB_CONNECT;
+
+const connectionUrl = (enviroment=='dev') ? dbURI : TEST_DB_CONNECT;
+console.log("env: "+enviroment+"  ---- url: "+connectionUrl)
+
+mongoose.connect("mongodb+srv://hodalAndela:0000@cluster0.oqg7g.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", () => {
   console.log("Connected to db! ");
 });
 
@@ -35,10 +42,10 @@ app.use(morgan("dev"));
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use("/api/v1/users", authRoute);
-app.use("/api/v1/blogs", blogRoutes);
+// app.use("/api/v1/blogs", blogRoutes);
 app.use("/api/v1/contacts", contactRoute);
 app.use("/api/v1/articles", article);
-app.use("/api/v1/subscribe",susbscriberRoute);
+//app.use('/api/v1/newsletter', susbscriberRoute);
 
 
 app.get("/", (req, res) => {
@@ -59,3 +66,4 @@ app.listen(PORT, () => {
   console.log(`Server is running on ${PORT}`);
 });
 export default app;
+

@@ -12,11 +12,7 @@ const blogSchema = new schema(
       type: String,
       required: true,
     },
-    slug:{
-      type:String,
-      required: true,
-
-    },
+   
     body: {
       type: String,
       required: true,

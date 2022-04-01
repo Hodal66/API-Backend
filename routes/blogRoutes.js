@@ -99,7 +99,7 @@ router.get("/", blog_index);
 
 
 
-router.post("/", verify, blog_create_post);
+router.post("/", blog_create_post);
 
 /**
  * @swagger

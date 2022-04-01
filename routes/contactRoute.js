@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { auth as verify } from "./verifyToken.js";
+import { auth } from "./verifyToken.js";
 
 import {
   allMessage,
@@ -146,6 +146,6 @@ router.get("/:id", messageDetails);
  *        description: Access denied!
  */
 //!!Delete a Message
-router.delete("/:id", verify, deleteMessage);
+router.delete("/:id", deleteMessage);
 
 export { router };
