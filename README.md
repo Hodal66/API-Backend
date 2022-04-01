@@ -1,6 +1,6 @@
-# API-Backend
+**Name of project : API-Backend for capston project**
 
-#**INTRODUCTION**
+**INTRODUCTION**
 
 **This is the first project about myself describution + Blog**
 
@@ -16,13 +16,13 @@ Activitis....
 
 ............................................................
 
-**IN HOME PAGES{
+**IN HOME PAGES**{
 
 #header
 
 -Blog -navigation links -title
 
-2.**content -->section1
+2.**content -->section1**
 
 contain 3 photos -their descriptions
 content -->section2--->About-Us Page
@@ -71,6 +71,17 @@ Folders we Added Resourses Folder to include All fontawesome Icons
 
 **IMAGES**
 used 3 images
+
+
+
+**#HOW THIS APP SHOULD BE MANUALLY TESTED??????**
+
+1.Open your text editor and create a new folder
+
+2.Open terminal window within your text editor
+
+==> Run `npm install `
+
 
 **YOU CAN FOUND MORE DETAILS ON**
 
